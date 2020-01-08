@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="jquery.js"></script>
+</head>
+<body>
+<input type="checkbox" checked onchange="add(this)"/>篮球
+</body>
+<script>
+  alert($('input:checkbox').prop("checked"))
+  $('input:checkbox').attr("checked", false)
+  function add(obj){
+    alert($(obj).prop("checked"))
+    //alert(obj.checked)
+
+    //alert($(this).is(":checked"))
+  }
+  function destroyer(arr) {
+    var args = [];
+    //arguments arguments 是一个类数组对象。代表传给一个function的参数列表。
+    //arguments是不管你形参多少个，而是传进来的实参有几个
+    console.log(arguments);//打印出来是含有三个元素的数组 （【数组，2，3】）
+
+    for(var i = 1; i < arguments.length; i++){
+      args.push(arguments[i]);
+      console.log(args);//打印数据[2,3]
+    }
+
+    var temp = arr.filter(function(item,index,array){
+      return args.indexOf(item) < 0;
+    });
+    console.log("tmp="+ temp);//打印数据[1,1]
+    return temp;
+  }
+  destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+</script>
+</html>
